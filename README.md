@@ -11,4 +11,4 @@
 
 ### 项目截图
 
-![screenshot](/Users/xmit/Documents/github/wechat-app-weather/screenshot.png)
+![screenshot](./screenshot.png)
