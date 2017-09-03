@@ -12,3 +12,9 @@
 ### 项目截图
 
 ![screenshot](./screenshot.png)
+
+
+
+### 扫码使用
+
+![qrcode](./qrcode.jpg)
