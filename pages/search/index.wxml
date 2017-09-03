@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="section">
+    <view class="search">
+      <input placeholder="请搜索城市" bindinput="durationSearch" focus="{{focus}}" />
+    </view>
+  </view>
+  <view class="section" hidden="{{hc}}">
+    <view class="hotcity">
+      <view class="hd">
+        <view class="title">热门城市</view>
+      </view>
+      <view class="bd">
+        <view class="wrap">
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.auto.val}}">{{hotcity.auto.name}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.bj}}">{{hotcity.bj}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.sh}}">{{hotcity.sh}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.gz}}">{{hotcity.gz}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.sz}}">{{hotcity.sz}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.hz}}">{{hotcity.hz}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.cd}}">{{hotcity.cd}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.lj}}">{{hotcity.lj}}</text>
+          <text class="btn" bindtap="getValue" data-text="{{hotcity.tj}}">{{hotcity.tj}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="hotcity">
+      <view class="hd">
+        <view class="title">历史记录</view>
+      </view>
+      <view class="bd">
+        <view class="wrap">
+          <text class="btn" bindtap="getValue" data-text="{{item}}"  wx:for="{{history}}" wx:key="val">{{item}}</text>
+        </view>
+      </view>
+      <view class="ft">
+        <view wx:if="{{history.length === 0}}">无历史记录</view>
+        <view wx:else bindtap="clearHistory">清除历史记录</view>
+      </view>
+    </view>
+  </view>
+  <view class="section" style="height: calc(100% - 90rpx);overflow: auto;" hidden="{{cityresult}}">
+    <view class="cityresult" wx:for="{{citydata}}" wx:key="time">
+      <view class="wrap" data-text="{{item[1]}}" bindtap="getValue">
+        <text class="txt">{{item[0]}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class="a">{{a}}</view>

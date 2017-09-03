@@ -1,0 +1,54 @@
+page {
+  height: 100%;
+}
+.container {
+  background: #F1F1F1;
+  font-size: 28rpx;
+  display: block;
+}
+.search {
+  margin: 20rpx;
+}
+.search input {
+  border-radius: 4px;
+  background: #fff;
+  height: 52rpx;
+  padding: 15rpx 20rpx;
+}
+.hotcity {
+  padding: 20rpx;
+}
+.hotcity .hd {
+  margin-bottom: 25rpx;
+}
+.hotcity .hd .title {
+  font-weight: bold;
+}
+.hotcity .wrap {
+  margin-left: -3.3333%;
+  overflow: hidden;
+}
+.hotcity .btn {
+  padding: 25rpx 20rpx;
+  border-radius: 4px;
+  background: #fff;
+  margin-left: 3.3333%;
+  display:inline-block;
+  float: left;
+  margin-bottom: 3.3333%;
+  width:30%;
+  box-sizing:border-box;
+  text-align:center;
+}
+.cityresult .wrap {
+  padding: 25rpx;
+  background: #fff;
+  border-bottom: 1px solid #F4F4F4;
+}
+.cityresult:last-child .wrap {
+  border-bottom: 0;
+}
+.hotcity .ft {
+  text-align: center;
+  margin: 30rpx 0;
+}

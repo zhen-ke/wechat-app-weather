@@ -1,0 +1,153 @@
+<!--index.wxml-->
+<view class="weather-app" hidden="{{show}}">
+  <view class="header">
+    <view class="add" bindtap="add">
+      <image src="image/location/location-arrow.svg"></image>
+      <text class="city" >{{location}}</text>
+    </view>
+    <view class="temperature">{{localTemperature}}˚</view>
+    <text class="summary">{{summary}}</text>
+  </view>
+  <view class="body">
+    <view class="day">
+      <view class="item" wx:for="{{days}}" wx:key="time">
+        <text class="time">{{item.time}}</text>
+        <view class="icon">
+          <image class="img" src="{{ item.icon }}"></image>
+          <text class="text">{{item.detail}}</text>
+        </view>
+        <text class="temperature">{{item.minTemperature}}˚ / {{item.maxTemperature}}˚</text>
+      </view>
+    </view>
+    <view class="suggestion">
+      <view class="title">生活指数</view>
+      <view class="list">
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.air }}"></image>
+            </view>
+            <!-- <view>AQI/PM2.5</view> -->
+            <text class="status">{{suggestion.air}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.comf }}"></image>
+            </view>
+            <!-- <view>舒适度指数</view> -->
+            <text class="status">{{suggestion.comf}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.cw }}"></image>
+            </view>
+            <!-- <view>洗车指数</view> -->
+            <text class="status">{{suggestion.cw}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.drsg }}"></image>
+            </view>
+            <!-- <view class="b">穿衣指数</view> -->
+            <text class="status">{{suggestion.drsg}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.flu }}"></image>
+            </view>
+            <!-- <view>感冒指数</view> -->
+            <text class="status">{{suggestion.flu}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.sport }}"></image>
+            </view>
+            <!-- <view>运动指数</view> -->
+            <text class="status">{{suggestion.sport}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.trav }}"></image>
+            </view>
+            <!-- <view>旅游指数</view> -->
+            <text class="status">{{suggestion.trav}}</text>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">
+              <image src="{{ suggestionIcon.uv }}"></image>
+            </view>
+            <!-- <view>紫外线指数</view> -->
+            <text class="status">{{suggestion.uv}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="details">
+      <view class="title">详情</view>
+      <view class="list">
+        <view class="item">
+          <view class="wrap">
+            <view class="column-l">
+              <view class="hd">风</view>
+              <view class="bd">{{detail.windSpeed}} m/s {{detail.windy}}</view>
+            </view>
+            <view class="column-r">
+              <image class="icon" src="{{detailIcon.windy}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="column-l">
+              <view class="hd">体感温度</view>
+              <view class="bd">{{detail.temperature}}˚</view>
+            </view>
+            <view class="column-r">
+              <image class="icon" src="{{detailIcon.temperature}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="column-l">
+              <view class="hd">相对湿度</view>
+              <view class="bd">{{detail.humidity}}%</view>
+            </view>
+            <view class="column-r">
+              <image class="icon" src="{{detailIcon.humidity}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="column-l">
+              <view class="hd">气压</view>
+              <view class="bd">{{detail.barometer}} Pa</view>
+            </view>
+            <view class="column-r">
+              <image class="icon" src="{{detailIcon.barometer}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">Written by XMit︎</view>
+</view>
+<view hidden="{{!show}}" class="loding">
+  <image src="./image/cloud.svg"></image>
+</view>
