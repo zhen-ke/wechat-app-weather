@@ -5,7 +5,7 @@
       <image src="image/location/location-arrow.svg"></image>
       <text class="city" >{{location}}</text>
     </view>
-    <view class="temperature">{{localTemperature}}˚</view>
+    <view class="temperature">{{localTemperature}}<span>˚</span></view>
     <text class="summary">{{summary}}</text>
   </view>
   <view class="body">
@@ -16,7 +16,7 @@
           <image class="img" src="{{ item.icon }}"></image>
           <text class="text">{{item.detail}}</text>
         </view>
-        <text class="temperature">{{item.minTemperature}}˚ / {{item.maxTemperature}}˚</text>
+        <view class="temperature"><text>{{item.maxTemperature}}˚</text><text>{{item.minTemperature}}˚</text></view>
       </view>
     </view>
     <view class="suggestion">

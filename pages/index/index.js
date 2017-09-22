@@ -147,7 +147,7 @@ Page({
         let detailTemp = {}
         let moreDaysTemp = {}
         let suggestionTemp = {}
-        let moreDaysMap = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+        let moreDaysMap = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
         detailTemp = { // 实况天气
           windSpeed: ((res.data.HeWeather5[0].now.wind.spd * 0.278) / 0.621).toFixed(0),
           windy: res.data.HeWeather5[0].now.wind.dir,
@@ -155,9 +155,9 @@ Page({
           barometer: res.data.HeWeather5[0].now.pres,
           humidity: res.data.HeWeather5[0].now.hum,
         }
-        for (let i = 0; i < 5; i++) { // 天气预报forecast
+        for (let i = 1; i < res.data.HeWeather5[0].daily_forecast.length - 1; i++) { // 天气预报forecast
           moreDaysTemp[i] = {
-            time: i === 0 ? "今天" : moreDaysMap[new Date(res.data.HeWeather5[0].daily_forecast[i].date.split("-").join("/")).getDay()],
+            time: moreDaysMap[new Date(res.data.HeWeather5[0].daily_forecast[i].date.split("-").join("/")).getDay()],
             icon: self.data.conditionCode[res.data.HeWeather5[0].daily_forecast[i].cond.code_d],
             detail: res.data.HeWeather5[0].daily_forecast[i].cond.txt_d,
             minTemperature: res.data.HeWeather5[0].daily_forecast[i].tmp.min,

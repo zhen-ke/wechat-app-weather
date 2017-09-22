@@ -26,14 +26,19 @@ page {
   height: 50rpx;
 }
 .header .add image {
-  width: 35rpx;
-  height: 35rpx;
+  width: 30rpx;
+  height: 30rpx;
   vertical-align: middle;
   margin-right: 10rpx;
 }
 .header .temperature {
   font-size: 120rpx;
   margin: 30rpx 0;
+  position:relative;
+}
+.header .temperature span {
+  position:absolute;
+  top: 0;
 }
 .body .day,
 .body .details {
@@ -113,7 +118,6 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 30rpx 0;
   border-bottom: 1px solid #eee;
   align-items: center;
   padding: 30rpx;
@@ -128,6 +132,9 @@ page {
 }
 .body .day .item .text {
   margin-left: 20rpx;
+}
+.body .day .item .temperature text:first-child {
+  margin-right:10rpx;
 }
 .body .details {
   padding: 0;
