@@ -19,6 +19,63 @@
         <view class="temperature"><text>{{item.maxTemperature}}˚</text><text>{{item.minTemperature}}˚</text></view>
       </view>
     </view>
+
+    <view class="suggestion">
+      <view class="title">空气指数</view>
+      <view class="list">
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.qlty}}</view>
+            <view>空气质量</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.aqi}}</view>
+            <view>AQI</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.pm25}}</view>
+            <view>PM2.5</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.pm10}}</view>
+            <view>PM10</view>
+          </view>
+        </view>
+
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.co}}</view>
+            <view>一氧化碳</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.no2}}</view>
+            <view>二氧化氮</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.o3}}</view>
+            <view>臭氧</view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="wrap">
+            <view class="icon">{{air.so2}}</view>
+            <view>二氧化硫</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
     <view class="suggestion">
       <view class="title">生活指数</view>
       <view class="list">

@@ -103,6 +103,16 @@ Page({
     show: true,
     prompt: "Loading ...", // 页面的初始数据
     lodingsrc: "./image/location/umbrella.svg",
+    air: {
+      aqi: '',
+      co: '',
+      no2: '',
+      o3: '',
+      pm10: '',
+      pm25: '',
+      qlty: '',
+      so2: '',
+    }
   },
   getUserLocation: function() { // 获取用户当前经纬度
     let self = this
@@ -144,10 +154,22 @@ Page({
       data: {city: self.data.location, key: '01a7798b060b468abdad006ea3de4713'},
       header: {'content-type': 'application/json'},
       success: function(res) {
+        // console.log(res)
         let detailTemp = {}
         let moreDaysTemp = {}
         let suggestionTemp = {}
         let moreDaysMap = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+        let airTemp = {}
+        airTemp = { // 空气质量
+          aqi: res.data.HeWeather5[0].aqi.city.aqi,
+          co: res.data.HeWeather5[0].aqi.city.co,
+          no2: res.data.HeWeather5[0].aqi.city.no2,
+          o3: res.data.HeWeather5[0].aqi.city.o3,
+          pm10: res.data.HeWeather5[0].aqi.city.pm10,
+          pm25: res.data.HeWeather5[0].aqi.city.pm25,
+          qlty: res.data.HeWeather5[0].aqi.city.qlty,
+          so2: res.data.HeWeather5[0].aqi.city.so2,
+        }
         detailTemp = { // 实况天气
           windSpeed: ((res.data.HeWeather5[0].now.wind.spd * 0.278) / 0.621).toFixed(0),
           windy: res.data.HeWeather5[0].now.wind.dir,
@@ -181,6 +203,7 @@ Page({
           detail: detailTemp,
           suggestion: suggestionTemp,
           days: moreDaysTemp,
+          air: airTemp,
           show: false,
         })
       },
