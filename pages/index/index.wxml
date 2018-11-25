@@ -1,14 +1,18 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="weather-app" hidden="{{show}}">
   <view class="header">
     <view class="add" bindtap="add">
       <image src="image/location/location-arrow.svg"></image>
-      <text class="city" >{{location}}</text>
+      <text class="city">{{location}}</text>
     </view>
-    <view class="temperature">{{localTemperature}}<span>˚</span></view>
+    <view class="temperature">
+      {{localTemperature}}
+      <span>˚</span>
+    </view>
     <text class="summary">{{summary}}</text>
   </view>
   <view class="body">
+    <!-- now -->
     <view class="day">
       <view class="item" wx:for="{{days}}" wx:key="time">
         <text class="time">{{item.time}}</text>
@@ -16,11 +20,14 @@
           <image class="img" src="{{ item.icon }}"></image>
           <text class="text">{{item.detail}}</text>
         </view>
-        <view class="temperature"><text>{{item.maxTemperature}}˚</text><text>{{item.minTemperature}}˚</text></view>
+        <view class="temperature">
+          <text>{{item.maxTemperature}}˚</text>
+          <text>{{item.minTemperature}}˚</text>
+        </view>
       </view>
     </view>
-
-    <view class="suggestion">
+    <!-- 空气指数 -->
+    <!-- <view class="suggestion">
       <view class="title">空气指数</view>
       <view class="list">
         <view class="item">
@@ -29,130 +36,23 @@
             <view>空气质量</view>
           </view>
         </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.aqi}}</view>
-            <view>AQI</view>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.pm25}}</view>
-            <view>PM2.5</view>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.pm10}}</view>
-            <view>PM10</view>
-          </view>
-        </view>
-
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.co}}</view>
-            <view>一氧化碳</view>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.no2}}</view>
-            <view>二氧化氮</view>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.o3}}</view>
-            <view>臭氧</view>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">{{air.so2}}</view>
-            <view>二氧化硫</view>
-          </view>
-        </view>
-
       </view>
-    </view>
-
+    </view> -->
+    <!-- 生活指数 -->
     <view class="suggestion">
       <view class="title">生活指数</view>
       <view class="list">
-        <view class="item">
+        <view class="item" wx:for="{{suggestion}}" wx:key="i">
           <view class="wrap">
             <view class="icon">
-              <image src="{{ suggestionIcon.air }}"></image>
+              <image src="{{ suggestionIcon[item.type] }}"></image>
             </view>
-            <!-- <view>AQI/PM2.5</view> -->
-            <text class="status">{{suggestion.air}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.comf }}"></image>
-            </view>
-            <!-- <view>舒适度指数</view> -->
-            <text class="status">{{suggestion.comf}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.cw }}"></image>
-            </view>
-            <!-- <view>洗车指数</view> -->
-            <text class="status">{{suggestion.cw}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.drsg }}"></image>
-            </view>
-            <!-- <view class="b">穿衣指数</view> -->
-            <text class="status">{{suggestion.drsg}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.flu }}"></image>
-            </view>
-            <!-- <view>感冒指数</view> -->
-            <text class="status">{{suggestion.flu}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.sport }}"></image>
-            </view>
-            <!-- <view>运动指数</view> -->
-            <text class="status">{{suggestion.sport}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.trav }}"></image>
-            </view>
-            <!-- <view>旅游指数</view> -->
-            <text class="status">{{suggestion.trav}}</text>
-          </view>
-        </view>
-        <view class="item">
-          <view class="wrap">
-            <view class="icon">
-              <image src="{{ suggestionIcon.uv }}"></image>
-            </view>
-            <!-- <view>紫外线指数</view> -->
-            <text class="status">{{suggestion.uv}}</text>
+            <text class="status">{{item.brf}}</text>
           </view>
         </view>
       </view>
     </view>
+    <!-- 详情 -->
     <view class="details">
       <view class="title">详情</view>
       <view class="list">
@@ -160,7 +60,7 @@
           <view class="wrap">
             <view class="column-l">
               <view class="hd">风</view>
-              <view class="bd">{{detail.windSpeed}} m/s {{detail.windy}}</view>
+              <view class="bd">{{detail.wind_spd}} m/s</view>
             </view>
             <view class="column-r">
               <image class="icon" src="{{detailIcon.windy}}"></image>
@@ -171,7 +71,7 @@
           <view class="wrap">
             <view class="column-l">
               <view class="hd">体感温度</view>
-              <view class="bd">{{detail.temperature}}˚</view>
+              <view class="bd">{{detail.tmp}}˚</view>
             </view>
             <view class="column-r">
               <image class="icon" src="{{detailIcon.temperature}}"></image>
@@ -182,7 +82,7 @@
           <view class="wrap">
             <view class="column-l">
               <view class="hd">相对湿度</view>
-              <view class="bd">{{detail.humidity}}%</view>
+              <view class="bd">{{detail.hum}}%</view>
             </view>
             <view class="column-r">
               <image class="icon" src="{{detailIcon.humidity}}"></image>
@@ -193,7 +93,7 @@
           <view class="wrap">
             <view class="column-l">
               <view class="hd">气压</view>
-              <view class="bd">{{detail.barometer}} Pa</view>
+              <view class="bd">{{detail.pres}} Pa</view>
             </view>
             <view class="column-r">
               <image class="icon" src="{{detailIcon.barometer}}"></image>

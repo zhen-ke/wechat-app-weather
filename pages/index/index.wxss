@@ -39,6 +39,7 @@ page {
 .header .temperature span {
   position:absolute;
   top: 0;
+  right:-50rpx;
 }
 .body .day,
 .body .details {
