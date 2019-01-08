@@ -11,6 +11,18 @@
     </view>
     <text class="summary">{{summary}}</text>
   </view>
+  <!-- 小时播报 -->
+  <view class="scroll">
+    <scroll-view scroll-x="true">
+      <view class="scroll-x">
+        <view wx:for-items="{{hourly}}" wx:key="name" class="item">
+          <view class="item-hd">{{item.time}}</view>
+          <image class="img" src="{{ item.condCode }}"></image>
+          <text class="item-bd">{{item.tmp}}˚</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
   <view class="body">
     <!-- now -->
     <view class="day">

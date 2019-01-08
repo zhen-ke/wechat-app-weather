@@ -91,11 +91,12 @@ Page({
       pm25: 'PM2.5',
       qlty: '空气质量',
       so2: '二氧化硫',
-    }
+    },
+    hourly: []
   },
   getUserLocation() { // 获取用户当前经纬度
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success: (res) => {
         this.decodingGps(res.longitude, res.latitude)
       },
@@ -113,6 +114,7 @@ Page({
       },
       header: { 'content-type': 'application/json' },
       success: (res) => {
+        console.log(res)
         this.setData({
           location: res.data.regeocode.addressComponent.district
         })
@@ -120,6 +122,34 @@ Page({
         this.getNowWeather()
         this.getLifestyle()
         // this.getAir()
+        this.getHourly()
+      },
+      fail: () => {
+        this.add()
+      }
+    })
+  },
+  getHourly() { // 实况天气
+    wx.request({
+      url: 'https://free-api.heweather.com/s6/weather/hourly',
+      data: {
+        location: this.data.location,
+        key: 'e4f463c603ec41628d4d497b5eccbe6a'
+      },
+      header: { 'content-type': 'application/json' },
+      success: (res) => {
+        let { hourly } = res.data.HeWeather6[0]
+        let hourlyArray = hourly.map(it => {
+          return {
+            time: it.time.slice(11),
+            condCode: this.data.conditionCode[it.cond_code],
+            tmp: it.tmp
+          }
+        })
+        console.log(hourlyArray)
+        this.setData({
+          hourly: hourlyArray
+        })
       },
       fail: () => {
         this.add()
@@ -241,6 +271,7 @@ Page({
         this.getWeather()
         this.getNowWeather()
         this.getLifestyle()
+        this.getHourly()
         // this.getAir()　
       }
     }
